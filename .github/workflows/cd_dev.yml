@@ -26,6 +26,7 @@ jobs:
           cd monorepo-2 && git pull
           pnpm install
           pnpm run build
+          npm install -g pm2
           pm2 restart fe-server
           pm2 restart http-server
           pm2 restart ws-server
