@@ -26,9 +26,10 @@ jobs:
           cd monorepo-2 && git pull
           curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
           sudo apt-get install -y nodejs
+          npm install -g pnpm
           pnpm install
           pnpm run build
-          npm install -g pm2
+          sudo npm install -g pm2
           pm2 restart fe-server
           pm2 restart http-server
           pm2 restart ws-server
