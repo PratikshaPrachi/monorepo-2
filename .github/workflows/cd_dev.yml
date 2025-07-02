@@ -18,7 +18,7 @@ jobs:
     - name: ssh into the machine
       uses: appleboy/ssh-action@v1
       with:
-        host: ${{ secrets.HOSTNAME }}
+        host: ${{ secrets.HOST }}
         username: ubuntu
         key: ${{ secrets.KEY }}
         port: 22
