@@ -1,0 +1,4 @@
+name: deploy to prod
+
+on:
+  push: ["production"]

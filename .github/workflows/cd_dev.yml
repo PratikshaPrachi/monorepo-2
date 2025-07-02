@@ -1,0 +1,31 @@
+name: continuous deploy to dev server
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  redeploy_everything:
+    name: redeploying everything to dev 
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: checkout code to runner
+      uses: actions/checkout@v2
+
+    - name: ssh into the machine
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.HOSTNAME }}
+        username: ubuntu
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          cd monorepo-2 && git pull
+          pnpm install
+          pnpm run build
+          pm2 restart fe-server
+          pm2 restart http-server
+          pm2 restart ws-server
