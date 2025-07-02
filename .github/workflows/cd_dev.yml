@@ -7,7 +7,7 @@ on:
 
 jobs:
   redeploy_everything:
-    name: redeploying everything to dev 
+    name: redeploying everything to dev server
     runs-on: ubuntu-latest
 
     steps:
